@@ -1,0 +1,51 @@
+Semi-supervised User Geolocation via Graph Convolutional Networks
+=================================================================
+
+
+
+
+Introduction
+------------
+This is the implementation of Semi-supervised User Geolocation via Graph Convolutional Networks published
+in ACL 2018. It contains 3 geolocation models: 1) gcn, 2) deep cca, and 3) concat network and text.
+The input data contains Twitter users with their tweets concatenated as a single document, and the
+@-mentions in their tweets is used to build a graph between users.
+
+The model uses the node features and the graph between them jointly to predict a location for users.
+For more information about the models refer to the paper.
+
+
+Geolocation Datasets
+--------------------
+Datasets are GEOTEXT a.k.a CMU (a small Twitter geolocation dataset)
+and TwitterUS a.k.a NA (a bigger Twitter geolocation dataset) both
+covering continental U.S. which can be downloaded from [here](https://www.amazon.com/clouddrive/share/kfl0TTPDkXuFqTZ17WJSnhXT0q6fGkTlOTOLZ9VVPNu)
+
+Quick Start
+-----------
+
+1. Download the datasets and place them in ''./data/cmu'' and ''./data/na''
+
+
+2. To run the experiments, look at the experiments directory.
+
+
+
+Citation
+--------
+```
+@InProceedings{rahimicontinuous2017,
+  author    = {Rahimi, Afshin and Cohn, Trevor  and  Baldwin, Timothy},
+  title     = {Semi-supervised User Geolocation via Graph Convolutional Networks},
+  booktitle = {Proceedings of ACL2018},
+  month     = {September},
+  year      = {2018},
+  address   = {Melbourne, Australia},
+  publisher = {Association for Computational Linguistics},
+  url       = {https://arxiv.org/abs/1804.08049}
+}
+```
+
+Contact
+-------
+Afshin Rahimi <afshinrahimi@gmail.com>
