@@ -1,0 +1,1 @@
+THEANO_FLAGS='device=cpu,floatX=float32' python -u resnet.py -hid 600 600 600 -bucket 2400 -batch 500 -d ~/datasets/na/processed_data/ -mindf 10 -reg 0.0 -dropout 0.5 -cel 15 -highway -load -feature_report -lblfraction 1.0 -seed 77
