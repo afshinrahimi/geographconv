@@ -6,13 +6,14 @@ Semi-supervised User Geolocation via Graph Convolutional Networks
 
 Introduction
 ------------
-This is the implementation of Semi-supervised User Geolocation via Graph Convolutional Networks published
+This is a Theano implementation of Semi-supervised User Geolocation via Graph Convolutional Networks paper, published
 in ACL 2018. It contains 3 geolocation models: 1) gcn, 2) deep cca, and 3) concat network and text.
 The input data contains Twitter users with their tweets concatenated as a single document, and the
 @-mentions in their tweets is used to build a graph between users.
 
 The model uses the node features and the graph between them jointly to predict a location for users.
-For more information about the models refer to the paper.
+For more information about the models refer to the paper. It contains a Theano-based Graph Convolutional Network
+model which can be used standalone for other experiments.
 
 
 Geolocation Datasets
