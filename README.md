@@ -55,16 +55,22 @@ For the GCN model:
 
 CMU:
 
+```
 THEANO_FLAGS='device=cuda0,floatX=float32' nice -n 9 python -u gcnmain.py -hid 300 300 300 -bucket 50 -batch 500 -d ./data/cmu/ -enc latin1 -mindf 10 -reg 0.0 -dropout 0.5 -cel 5  -highway
+```
 
 NA:
 
+```
 THEANO_FLAGS='device=cpu,floatX=float32' python -u gcnmain.py -hid 600 600 600 -bucket 2400 -batch 500 -d ~/data/na/ -mindf 10 -reg 0.0 -dropout 0.5 -cel 15 -highway
+```
+
 
 WORLD:
 
+```
 THEANO_FLAGS='device=cpu,floatX=float32' python -u gcnmain.py -hid 900 900 900 -bucket 2400 -batch 500 -d ~/data/world/ -mindf 10 -reg 0.0 -dropout 0.5 -cel 5 -highway
-
+```
 
 
 
