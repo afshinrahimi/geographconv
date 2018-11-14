@@ -27,8 +27,30 @@ Quick Start
 
 1. Download the datasets and place them in ''./data/cmu'' and ''./data/na''
 
+2. Create a new environment:
+
+```conda create --name geo --file requirements.txt```
+
+Activate the environment:
+
+```conda activate geo```
+
+Upgrade Theano and Lasagne:
+
+```
+pip install --upgrade https://github.com/Theano/Theano/archive/master.zip
+
+pip install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip
+```
+
 
 2. To run the experiments, look at the experiments directory.
+
+Note 1: The default parameters are not suitable for running the experiments.
+
+Note 2: By changing the seed (e.g. using -seed 1 in command line) the results might slightly change, they might be slightly better or worse than the reported in the paper, but they shouldn't be very different.
+
+
 For the GCN model:
 
 CMU:
