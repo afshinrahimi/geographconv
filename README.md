@@ -25,7 +25,7 @@ covering continental U.S. which can be downloaded from [here](https://www.amazon
 Preprocessed Data
 -----------------
 If you want to use the preprocessed data e.g., X, A_hat in your own model download the pickle files from
-[here] (https://www.amazon.com/clouddrive/share/yaH3HoyiKMVOrMxWLHeRaCEaCuH8MXoLz4UqUyOxCse) (1 *dump.pkl* file for each dataset).
+[here](https://www.amazon.com/clouddrive/share/yaH3HoyiKMVOrMxWLHeRaCEaCuH8MXoLz4UqUyOxCse) (1 *dump.pkl* file for each dataset).
 
 Then load the file like this:
 
