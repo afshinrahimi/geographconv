@@ -94,7 +94,7 @@ Quick Start
 
 2. Create a new environment:
 
-```conda create --name geo --file requirements.txt```
+```conda create --name geo python=2.7 --file requirements.txt```
 
 Activate the environment:
 
