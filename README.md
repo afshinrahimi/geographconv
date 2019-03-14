@@ -22,6 +22,55 @@ Datasets are GEOTEXT a.k.a CMU (a small Twitter geolocation dataset)
 and TwitterUS a.k.a NA (a bigger Twitter geolocation dataset) both
 covering continental U.S. which can be downloaded from [here](https://www.amazon.com/clouddrive/share/kfl0TTPDkXuFqTZ17WJSnhXT0q6fGkTlOTOLZ9VVPNu)
 
+If you want to use the preprocessed data e.g., X, A_hat in your own model download the pickle files from
+[here] (https://www.amazon.com/clouddrive/share/yaH3HoyiKMVOrMxWLHeRaCEaCuH8MXoLz4UqUyOxCse) (1 *dump.pkl* file for each dataset).
+
+Then load the file like this:
+
+```python
+import cPickle
+
+def load_obj(filename, serializer=cPickle):
+    with gzip.open(filename, 'rb') as fin:
+        obj = serializer.load(fin)
+    return obj
+
+
+data = load_obj('dump.pkl')
+A, X_train, Y_train, X_dev, Y_dev, X_test, Y_test, U_train, U_dev, U_test, classLatMedian, classLonMedian, userLocation = data
+#A is the normalised laplacian matrix as A_hat in Kipf et al. (2016).
+```
+Then build your model and make predictions on X_test to get *y_pred*.
+Then use the following function to evaluate the geolocation performance:
+
+```python
+from haversine import haversine
+import logging
+def geo_eval(y_true, y_pred, U_eval, classLatMedian, classLonMedian, userLocation):
+    assert len(y_pred) == len(U_eval), "#preds: %d, #users: %d" %(len(y_pred), len(U_eval))
+    distances = []
+    latlon_pred = []
+    latlon_true = []
+    for i in range(0, len(y_pred)):
+        user = U_eval[i]
+        location = userLocation[user].split(',')
+        lat, lon = float(location[0]), float(location[1])
+        latlon_true.append([lat, lon])
+        prediction = str(y_pred[i])
+        lat_pred, lon_pred = classLatMedian[prediction], classLonMedian[prediction]
+        latlon_pred.append([lat_pred, lon_pred])  
+        distance = haversine((lat, lon), (lat_pred, lon_pred))
+        distances.append(distance)
+
+    acc_at_161 = 100 * len([d for d in distances if d < 161]) / float(len(distances))
+
+    logging.info( "Mean: " + str(int(np.mean(distances))) + " Median: " + str(int(np.median(distances))) + " Acc@161: " + str(int(acc_at_161)))
+        
+    return np.mean(distances), np.median(distances), acc_at_161, distances, latlon_true, latlon_pred
+
+mean, median, acc, _, _ = geo_eval(y_true, y_pred, U_eval, classLatMedian, classLonMedian, userLocation)
+```
+
 Quick Start
 -----------
 
