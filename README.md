@@ -22,6 +22,8 @@ Datasets are GEOTEXT a.k.a CMU (a small Twitter geolocation dataset)
 and TwitterUS a.k.a NA (a bigger Twitter geolocation dataset) both
 covering continental U.S. which can be downloaded from [here](https://www.amazon.com/clouddrive/share/kfl0TTPDkXuFqTZ17WJSnhXT0q6fGkTlOTOLZ9VVPNu)
 
+Preprocessed Data
+-----------------
 If you want to use the preprocessed data e.g., X, A_hat in your own model download the pickle files from
 [here] (https://www.amazon.com/clouddrive/share/yaH3HoyiKMVOrMxWLHeRaCEaCuH8MXoLz4UqUyOxCse) (1 *dump.pkl* file for each dataset).
 
