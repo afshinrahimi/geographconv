@@ -25,7 +25,8 @@ covering continental U.S. which can be downloaded from [here](https://www.amazon
 Preprocessed Data
 -----------------
 If you want to use the preprocessed data e.g., **X**, **A** in your own model download the pickle files from
-[here](https://www.amazon.com/clouddrive/share/yaH3HoyiKMVOrMxWLHeRaCEaCuH8MXoLz4UqUyOxCse) (1 **dump.pkl** file for each dataset). **A** is the normalised Laplacian matrix, and **X** is the node features (BoW) partitioned into train, dev, and test sets. To run *GCN* one needs to concat them. The same applies to the node's **Y** labels.
+[here](https://www.amazon.com/clouddrive/share/yaH3HoyiKMVOrMxWLHeRaCEaCuH8MXoLz4UqUyOxCse) (1 **dump.pkl** file for each dataset). **A** is the normalised Laplacian matrix, and **X** is the node features (BoW) partitioned into train, dev, and test sets.
+
 
 Then load the file like this:
 
@@ -41,6 +42,18 @@ def load_obj(filename, serializer=cPickle):
 data = load_obj('dump.pkl')
 A, X_train, Y_train, X_dev, Y_dev, X_test, Y_test, U_train, U_dev, U_test, classLatMedian, classLonMedian, userLocation = data
 #A is the normalised laplacian matrix as A_hat in Kipf et al. (2016).
+#The X_? and Y_? should be concatenated to be feed to GCN.
+X = sp.sparse.vstack([X_train, X_dev, X_test])
+if len(Y_train.shape) == 1:
+    Y = np.hstack((Y_train, Y_dev, Y_test))
+else:
+    Y = np.vstack((Y_train, Y_dev, Y_test))
+print(A.shape, X.shape, Y.shape)
+#get train/dev/test indices in X, Y, and A.
+train_indices = np.asarray(range(0, X_train.shape[0])).astype(dtypeint)
+dev_indices = np.asarray(range(X_train.shape[0], X_train.shape[0] + X_dev.shape[0])).astype(dtypeint)
+test_indices = np.asarray(range(X_train.shape[0] + X_dev.shape[0], X_train.shape[0] + X_dev.shape[0] + X_test.shape[0])).astype(dtypeint)
+
 ```
 Then build your model and make predictions on **X_test** to get **y_pred**.
 Then use the following function to evaluate the geolocation performance:
