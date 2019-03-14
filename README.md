@@ -142,15 +142,17 @@ THEANO_FLAGS='device=cpu,floatX=float32' python -u gcnmain.py -hid 900 900 900 -
 Citation
 --------
 ```
-@InProceedings{rahimicontinuous2017,
-  author    = {Rahimi, Afshin and Cohn, Trevor  and  Baldwin, Timothy},
-  title     = {Semi-supervised User Geolocation via Graph Convolutional Networks},
-  booktitle = {Proceedings of ACL2018},
-  month     = {September},
-  year      = {2018},
-  address   = {Melbourne, Australia},
-  publisher = {Association for Computational Linguistics},
-  url       = {https://arxiv.org/abs/1804.08049}
+@InProceedings{P18-1187,
+  author = 	"Rahimi, Afshin
+		and Cohn, Trevor
+		and Baldwin, Timothy",
+  title = 	"Semi-supervised User Geolocation via Graph Convolutional Networks",
+  booktitle = 	"Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+  year = 	"2018",
+  publisher = 	"Association for Computational Linguistics",
+  pages = 	"2009--2019",
+  location = 	"Melbourne, Australia",
+  url = 	"http://aclweb.org/anthology/P18-1187"
 }
 ```
 
