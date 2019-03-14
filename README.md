@@ -31,6 +31,7 @@ If you want to use the preprocessed data e.g., **X**, **A** in your own model do
 Then load the file like this:
 
 ```python
+import numpy as np
 import cPickle
 
 def load_obj(filename, serializer=cPickle):
