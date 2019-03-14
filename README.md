@@ -24,8 +24,8 @@ covering continental U.S. which can be downloaded from [here](https://www.amazon
 
 Preprocessed Data
 -----------------
-If you want to use the preprocessed data e.g., X, A_hat in your own model download the pickle files from
-[here](https://www.amazon.com/clouddrive/share/yaH3HoyiKMVOrMxWLHeRaCEaCuH8MXoLz4UqUyOxCse) (1 *dump.pkl* file for each dataset).
+If you want to use the preprocessed data e.g., **X**, **A** in your own model download the pickle files from
+[here](https://www.amazon.com/clouddrive/share/yaH3HoyiKMVOrMxWLHeRaCEaCuH8MXoLz4UqUyOxCse) (1 **dump.pkl** file for each dataset). **A** is the normalised Laplacian matrix, and **X** is the node features (BoW) partitioned into train, dev, and test sets. To run *GCN* one needs to concat them. The same applies to the node's **Y** labels.
 
 Then load the file like this:
 
@@ -42,7 +42,7 @@ data = load_obj('dump.pkl')
 A, X_train, Y_train, X_dev, Y_dev, X_test, Y_test, U_train, U_dev, U_test, classLatMedian, classLonMedian, userLocation = data
 #A is the normalised laplacian matrix as A_hat in Kipf et al. (2016).
 ```
-Then build your model and make predictions on X_test to get *y_pred*.
+Then build your model and make predictions on **X_test** to get **y_pred**.
 Then use the following function to evaluate the geolocation performance:
 
 ```python
@@ -70,7 +70,7 @@ def geo_eval(y_true, y_pred, U_eval, classLatMedian, classLonMedian, userLocatio
         
     return np.mean(distances), np.median(distances), acc_at_161, distances, latlon_true, latlon_pred
 
-mean, median, acc, _, _ = geo_eval(y_true, y_pred, U_eval, classLatMedian, classLonMedian, userLocation)
+mean, median, acc, _, _, _ = geo_eval(y_true, y_pred, U_eval, classLatMedian, classLonMedian, userLocation)
 ```
 
 Quick Start
