@@ -94,11 +94,15 @@ Quick Start
 
 2. Create a new environment:
 
-```conda create --name geo python=2.7 --file requirements.txt```
+```conda create --name geo python=2.7```
 
 Activate the environment:
 
 ```conda activate geo```
+
+Install Libraries:
+
+```pip install -r requirements.txt```
 
 Upgrade Theano and Lasagne:
 
