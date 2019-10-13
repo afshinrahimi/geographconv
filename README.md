@@ -92,6 +92,43 @@ Quick Start
 
 1. Download the datasets and place them in ''./data/cmu'' and ''./data/na''
 
+```
+.
+├── data
+│   ├── cmu
+│   │   ├── user_info.dev.gz
+│   │   ├── user_info.test.gz
+│   │   ├── user_info.train.gz
+│   │
+│   └── na
+│   	├── user_info.dev.gz
+│   	├── user_info.test.gz
+│       ├── user_info.train.gz
+│  
+├── data.py
+├── data.pyc
+├── deepcca.py
+├── experiments
+│   ├── cmu-concat-fractions.sh
+│   ├── cmu-dcca-fractions.sh
+│   ├── cmu-gcn-fractions.sh
+│   ├── cmu_layers_highway.sh
+│   ├── cmu_layers_nohighway.sh
+│   ├── feature_report.sh
+│   ├── save_model.sh
+│   └── tunebucket.sh
+├── gcnmain.py
+├── gcnmodel.py
+├── gcnmodel.pyc
+├── kdtree.py
+├── kdtree.pyc
+├── mlp.py
+├── README.md
+├── requirements.txt
+└── utils.py
+
+```
+
 2. Create a new environment:
 
 ```conda create --name geo python=2.7```
