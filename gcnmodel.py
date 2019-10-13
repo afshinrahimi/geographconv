@@ -20,7 +20,6 @@ import pickle
 import gzip
 from collections import OrderedDict
 from _collections import defaultdict
-from binstar_client.tests.coverage_report import report
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.INFO)
 
 
