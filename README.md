@@ -33,6 +33,7 @@ Then load the file like this:
 ```python
 import numpy as np
 import cPickle
+import scipy as sp
 
 def load_obj(filename, serializer=cPickle):
     with gzip.open(filename, 'rb') as fin:
