@@ -132,7 +132,7 @@ Quick Start
 
 2. Create a new environment:
 
-```conda create --name geo python=2.7```
+```conda create --name geo python=3.7```
 
 Activate the environment:
 
