@@ -1,18 +1,13 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: linux-64
-hickle==2.1.0
-pandas==0.22.0
+pandas
 Lasagne==0.1
-numpy==1.14.3
-matplotlib==2.2.2
-seaborn==0.8.1
+numpy
+matplotlib==3.3.3
+seaborn
 Theano==1.0.3
-scipy==1.0.1
-anaconda_client==1.2.2
-haversine==2.0.0
-networkx==2.2
-params==0.5.0
-pyshp==2.1.0
-Shapely==1.6.4.post2
-scikit_learn==0.20.3
+scipy
+haversine
+networkx
+scikit_learn

@@ -6,8 +6,6 @@
 from __future__ import print_function
 from __future__ import absolute_import
 from __future__ import division
-import matplotlib
-matplotlib.use('Agg')
 import os
 import sys
 import argparse
@@ -114,7 +112,7 @@ def preprocess_data(data_home, **kwargs):
 
     dl.get_graph()  
     logging.info('creating adjacency matrix...')
-    adj = nx.adjacency_matrix(dl.graph, nodelist=xrange(len(U_train + U_dev + U_test)), weight='w')
+    adj = nx.adjacency_matrix(dl.graph, nodelist=range(len(U_train + U_dev + U_test)), weight='w')
     
     adj.setdiag(0)
     #selfloop_value = np.asarray(adj.sum(axis=1)).reshape(-1,)

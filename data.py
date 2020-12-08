@@ -20,24 +20,17 @@ from collections import Counter
 from sklearn.neighbors import NearestNeighbors
 from matplotlib.collections import PatchCollection
 import kdtree
-import cPickle
-import hickle
+import pickle
 
 #from networkx.algorithms.bipartite.projection import weighted_projected_graph
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.INFO)
 
-def dump_obj(obj, filename, protocol=-1, serializer=cPickle):
-    if serializer == hickle:
-        serializer.dump(obj, filename, mode='w', compression='gzip')
-    else:
-        with gzip.open(filename, 'wb') as fout:
-            serializer.dump(obj, fout, protocol)
-def load_obj(filename, serializer=cPickle):
-    if serializer == hickle:
-        obj = serializer.load(filename)
-    else:
-        with gzip.open(filename, 'rb') as fin:
-            obj = serializer.load(fin)
+def dump_obj(obj, filename, protocol=-1, serializer=pickle):
+    with gzip.open(filename, 'wb') as fout:
+        serializer.dump(obj, fout, protocol)
+def load_obj(filename, serializer=pickle):
+    with gzip.open(filename, 'rb') as fin:
+        obj = serializer.load(fin)
     return obj
     
 
@@ -182,7 +175,7 @@ class DataLoader():
             for id in idmentions:
                 g.add_edge(id, user_id)    
         celebrities = []
-        for i in xrange(len(nodes_list), len(node_id)):
+        for i in range(len(nodes_list), len(node_id)):
             deg = len(g[i])
             if deg == 1 or deg > self.celebrity_threshold:
                 celebrities.append(i)
@@ -226,7 +219,7 @@ class DataLoader():
             for id in idmentions:
                 g.add_edge(id, user_id)
         celebrities = []
-        for i in xrange(len(nodes_list), len(node_id)):
+        for i in range(len(nodes_list), len(node_id)):
             deg = len(g[i])
             if deg > self.celebrity_threshold:
                 celebrities.append(i)
@@ -251,7 +244,7 @@ class DataLoader():
             degree_distmean[c_degree].append(c_meandist)
             c_distmean[c_name] = [c_degree, c_meandist]
         with open('celebrity.pkl', 'wb') as fin:
-            cPickle.dump((c_distmean, degree_distmean, degree_distance), fin)
+            pickle.dump((c_distmean, degree_distmean, degree_distance), fin)
             
             
         logging.info('removing %d celebrity nodes with degree higher than %d' % (len(celebrities), self.celebrity_threshold))
@@ -309,7 +302,7 @@ class DataLoader():
         dev_locs = self.df_dev[['lat', 'lon']].values
         test_locs = self.df_test[['lat', 'lon']].values
         nnbr = NearestNeighbors(n_neighbors=1, algorithm='brute', leaf_size=1, metric=haversine, n_jobs=4)
-        nnbr.fit(np.array(self.cluster_median.values()))
+        nnbr.fit(np.array([v for v in self.cluster_median.values()]))
         self.dev_classes = nnbr.kneighbors(dev_locs, n_neighbors=1, return_distance=False)[:, 0]
         self.test_classes = nnbr.kneighbors(test_locs, n_neighbors=1, return_distance=False)[:, 0]
 
@@ -412,7 +405,6 @@ class DataLoader():
         train_locs = np.transpose(np.vstack((mlat, mlon)))        
         ax = plt.gca()
         #fig = plt.figure()  # figsize=(4,4.2)
-        print fig.get_size_inches()
 
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
@@ -479,7 +471,6 @@ class DataLoader():
         
         ax = plt.gca()
         #fig = plt.figure()  # figsize=(4,4.2)
-        print fig.get_size_inches()
 
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
@@ -523,7 +514,7 @@ class DataLoader():
         plt.tight_layout()
         plt.savefig(filename)
         #plt.close()
-        print "the plot saved in " + filename 
+        print("the plot saved in " + filename)
 
     def draw_kmeans_clusters(self, filename, figsize=(4,3)):
         import matplotlib as mpl

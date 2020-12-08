@@ -419,14 +419,14 @@ class GraphConv():
         np.random.seed(seed)
         logging.info('training for {} epochs with batch size {}'.format(n_epochs, batch_size))
         best_params = None
-        best_val_loss = sys.maxint
+        best_val_loss = sys.maxsize
         best_val_acc = 0.0
         n_validation_down = 0
         report_k_epoch = 1
 
         X_train, y_train = X, Y[train_indices]
         y_dev = Y[val_indices]
-        for n in xrange(n_epochs):
+        for n in range(n_epochs):
             l_train, acc_train, l_val, acc_val, all_probs = self.f_train(X_train, y_train, y_dev, H, train_indices, val_indices)
             l_train, acc_train = l_train.item(), acc_train.item()
             l_val, acc_val = l_val.item(), acc_val.item()
