@@ -21,11 +21,12 @@ Geolocation Datasets
 Datasets are GEOTEXT a.k.a CMU (a small Twitter geolocation dataset)
 and TwitterUS a.k.a NA (a bigger Twitter geolocation dataset) both
 covering continental U.S. which can be downloaded from [here](https://www.amazon.com/clouddrive/share/kfl0TTPDkXuFqTZ17WJSnhXT0q6fGkTlOTOLZ9VVPNu)
+Note: the dataset in raw format is not available anymore, go to the preprocessed data section.
 
 Preprocessed Data
 -----------------
 If you want to use the preprocessed data e.g., **X**, **A** in your own model download the pickle files from
-[here](https://www.amazon.com/clouddrive/share/yaH3HoyiKMVOrMxWLHeRaCEaCuH8MXoLz4UqUyOxCse) (1 **dump.pkl** file for each dataset). **A** is the normalised Laplacian matrix, and **X** is the node features (BoW) partitioned into train, dev, and test sets.
+[here](https://drive.google.com/drive/folders/1b9sRohrx6Xqb5I18WC-t_gBIWjPPloKJ?usp=drive_link) (1 **dump.pkl** file for each dataset). **A** is the normalised Laplacian matrix, and **X** is the node features (BoW) partitioned into train, dev, and test sets.
 
 
 Then load the file like this:
